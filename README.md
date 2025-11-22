@@ -1,5 +1,7 @@
 # DocX – Client Document Manager
 
+Live Deployed link here: doczz-one.vercel.app/
+
 A secure MERN stack application to manage client documents with sharing, access control, and notifications.
 
 ***
