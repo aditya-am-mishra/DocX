@@ -1,0 +1,58 @@
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider } from './contexts/AuthContext.js';
+import PrivateRoute from './components/PrivateRoute.js';
+import SkipToContent from './components/SkipToContent.js';
+import Login from './pages/Login.js';
+import Register from './pages/Register.js';
+import Dashboard from './pages/Dashboard.js';
+import Clients from './pages/Clients.js';
+import Document from './pages/Document.js';  // fixed import
+
+function App() {
+  return (
+    <AuthProvider>
+      <Router
+        future={{
+          v7_startTransition: true
+        }}
+      >
+        <SkipToContent />
+        <Routes
+          future={{
+            v7_relativeSplatPath: true
+          }}
+        >
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/clients"
+            element={
+              <PrivateRoute>
+                <Clients />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/documents"
+            element={
+              <PrivateRoute>
+                <Document />   {/* use Document here */}
+              </PrivateRoute>
+            }
+          />
+          <Route path="/" element={<Navigate to="/dashboard" replace />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
+  );
+}
+
+export default App;
