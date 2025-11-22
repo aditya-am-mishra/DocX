@@ -23,7 +23,8 @@ app.use(helmet());
 const defaultOrigins = [
   'http://localhost:5173',
   'http://localhost:5174',
-  'https://doczz-one.vercel.app',       // <- your Vercel frontend
+  'https://doczz-one.vercel.app',
+  'https://doczz-pbsequ8p6-aditya-am-mishras-projects.vercel.app',       // <- your Vercel frontend
 ];
 
 const envOrigins = process.env.CORS_ORIGIN
